@@ -1,0 +1,56 @@
+{
+  "name": "node-project-scratch",
+  "version": "1.0.0",
+  "description": "Scratch project for node.js application",
+  "main": "index.js",
+  "author": "Serhii Biliaiev <serhii.biliaiev@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "rimraf ./dist && babel -d ./dist ./src -s && node dist/main.js",
+    "dev": "node dev.js",
+    "lint:js": "eslint ./src",
+    "lint-staged": "lint-staged"
+  },
+  "devDependencies": {
+    "babel-register": "^6.26.0",
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-prettier": "^2.6.0",
+    "eslint-plugin-import": "^2.7.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.3.0",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.7.4"
+  },
+  "lint-staged": {
+    "*.{js, json, css}": ["eslint", "prettier --write"]
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": ["airbnb-base", "prettier"],
+    "env": {
+      "node": true
+    }
+  },
+  "prettier": {
+    "parser": "flow",
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "rimraf": "^2.6.2"
+  },
+  "babel": {
+    "presets": [
+      "env",
+      {
+        "targets": {
+          "node": "current"
+        }
+      }
+    ]
+  }
+}
