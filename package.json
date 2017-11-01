@@ -9,7 +9,7 @@
     "start": "rimraf ./dist && babel -d ./dist ./src -s && node dist/main.js",
     "dev": "node dev.js",
     "lint:js": "eslint ./src",
-    "precommit": "lint-staged"
+    "lint-staged": "lint-staged"
   },
   "devDependencies": {
     "babel-register": "^6.26.0",
@@ -23,7 +23,7 @@
     "prettier": "^1.7.4"
   },
   "lint-staged": {
-    "*.{js, json, css}": "eslint"
+    "*.{js, json, css}": ["eslint", "prettier --write"]
   },
   "eslintConfig": {
     "root": true,
@@ -32,6 +32,7 @@
       "node": true
     }
   },
+  "pre-commit": "lint-staged",
   "prettier": {
     "parser": "flow",
     "singleQuote": true,

@@ -1,3 +1,5 @@
 console.log('hello');
 
-var a = 1;
+const obj = { id: 123, label: 'some' };
+
+console.log('obj', obj);
