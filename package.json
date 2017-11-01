@@ -23,7 +23,7 @@
     "prettier": "^1.7.4"
   },
   "lint-staged": {
-    "*.{js, json, css}": ["eslint", "prettier --write"]
+    "*.{js, json, css}": "eslint"
   },
   "eslintConfig": {
     "root": true,
