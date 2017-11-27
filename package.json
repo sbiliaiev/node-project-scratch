@@ -73,13 +73,15 @@
   },
   "babel": {
     "presets": [
-      "env",
       "flow",
-      {
-        "targets": {
-          "node": "current"
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
         }
-      }
+      ]
     ]
   }
 }
