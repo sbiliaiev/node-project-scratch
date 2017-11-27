@@ -9,27 +9,54 @@
     "start": "rimraf ./dist && babel -d ./dist ./src -s && node dist/main.js",
     "dev": "node dev.js",
     "lint:js": "eslint ./src",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "flow": "flow"
   },
   "devDependencies": {
+    "babel-eslint": "^8.0.2",
+    "babel-preset-flow": "^6.23.0",
     "babel-register": "^6.26.0",
     "eslint": "^4.9.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-prettier": "^2.6.0",
+    "eslint-plugin-flowtype": "^2.39.1",
     "eslint-plugin-import": "^2.7.0",
+    "flow-bin": "^0.59.0",
     "husky": "^0.14.3",
     "lint-staged": "^4.3.0",
     "pre-commit": "^1.2.2",
     "prettier": "^1.7.4"
   },
   "lint-staged": {
-    "*.{js, json, css}": ["eslint", "prettier --write"]
+    "*.{js, json, css}": [
+      "eslint",
+      "flow",
+      "prettier --write"
+    ]
   },
   "eslintConfig": {
     "root": true,
-    "extends": ["airbnb-base", "prettier"],
+    "extends": [
+      "airbnb-base",
+      "plugin:flowtype/recommended",
+      "prettier"
+    ],
     "env": {
       "node": true
+    },
+    "parser": "babel-eslint",
+    "plugins": [
+      "flowtype"
+    ],
+    "rules": {
+      "flowtype/require-parameter-type": 2,
+      "flowtype/require-return-type": [
+        2,
+        "always",
+        {
+          "annotateUndefined": "never"
+        }
+      ]
     }
   },
   "pre-commit": "lint-staged",
@@ -47,6 +74,7 @@
   "babel": {
     "presets": [
       "env",
+      "flow",
       {
         "targets": {
           "node": "current"
